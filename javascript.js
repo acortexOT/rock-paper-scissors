@@ -4,7 +4,7 @@ let playerSelection
 let computerSelection
 
 function getComputerSelection() {                             //create random number and hold in computerSelection
-    randomNumber = Math.floor(Math.randomNumber * 3);
+    randomNumber = Math.floor(Math.randomNumber() * 3);
     (randomNumber === 0) ? computerSelection = 'ROCK' :
     (randomNumber === 1) ? computerSelection = 'PAPER': 
     computerSelection = 'SCISSORS'
@@ -36,7 +36,7 @@ function compareRound() {                //compares using IF statement, holds in
 //PLAY ROUND
 function playRound() {
     playerSelection = prompt("Make your move: ROCK, PAPER or SCISSORS", 'type your move here');
-    playerSelection = playerSelection.toUpperCase;   //change to all uppercase to allow for input to be case insensitive.
+    playerSelection = playerSelection.toUpperCase();   //change to all uppercase to allow for input to be case insensitive.
     getComputerSelection();
     compareRound();
 }
