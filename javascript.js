@@ -4,7 +4,7 @@ let playerSelection
 let computerSelection
 
 function getComputerSelection() {                             //create random number and hold in computerSelection
-    randomNumber = Math.floor(Math.randomNumber() * 3);
+    randomNumber = Math.floor(Math.random() * 3);
     (randomNumber === 0) ? computerSelection = 'ROCK' :
     (randomNumber === 1) ? computerSelection = 'PAPER': 
     computerSelection = 'SCISSORS'
