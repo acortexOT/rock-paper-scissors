@@ -1,39 +1,53 @@
-//create variable let playerWinTotal = 0
-//create variable let computerWinTotal = 0
+let playerWinTotal = 0
+let computerWinTotal = 0
+let playerSelection
+let computerSelection
 
+function getComputerSelection() {                             //create random number and hold in computerSelection
+    randomNumber = Math.floor(Math.randomNumber * 3);
+    (randomNumber === 0) ? computerSelection = 'ROCK' :
+    (randomNumber === 1) ? computerSelection = 'PAPER': 
+    computerSelection = 'SCISSORS'
+}
+
+//COMPARE ROUND
+function compareRound() {                //compares using IF statement, holds in local variable const result and provides output to console with who won.
+    if (playerSelection === computerSelection) {                        //Tie game, you both picked same result and each get a point.
+        console.log(`Tie game, you both picked ${playerSelection}`);
+        computerWinTotal += 1;
+        playerWinTotal += 1;
+        console.log(`The score is now you: ${playerWinTotal}. Computer: ${computerWinTotal}.`);
+    } else if ((playerSelection === 'ROCK' && computerSelection === 'SCISSORS') ||    //player wins
+        (playerSelection === 'PAPER' && computerSelection === 'ROCK') ||
+        (playerSelection === 'SCISSORS' && computerSelection === 'PAPER')) {
+            console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
+            playerWinTotal += 1; 
+            console.log(`The score is now you: ${playerWinTotal}. Computer: ${computerWinTotal}.`);
+    } else if ((computerSelection === 'ROCK' && playerSelection === 'SCISSORS') ||     //computer wins
+        (computerSelection === 'PAPER' && playerSelection === 'ROCK') ||
+        (computerSelection === 'SCISSORS' && playerSelection === 'PAPER')) {
+            console.log(`You lose. ${computerSelection} beats ${playerSelection}.`);
+            computerWinTotal += 1; 
+            console.log(`The score is now you: ${playerWinTotal}. Computer: ${computerWinTotal}.`);    
+        }else {
+            console.log(`Oops. Invalid choice. Please select ROCK, PAPER or SCISSORS. The score is still you: ${playerWinTotal} computer: ${computerWinTotal}.`)
+    } 
+}
 //PLAY ROUND
-//create function playRound()
-    //create variable const computerSelection to hold random computer choice
-    //create variable const playerSelection to hold players selection from prompt
+function playRound() {
+    playerSelection = prompt("Make your move: ROCK, PAPER or SCISSORS", 'type your move here');
+    playerSelection = playerSelection.toUpperCase;   //change to all uppercase to allow for input to be case insensitive.
+    getComputerSelection();
+    compareRound();
+}
 
-    //create function getComputerChoice() that randomly selects between 0 and 2
-        //function getComputerChoice() uses number selection to pick between rock, paper or scissors
-        //function getComputerChoice() puts random selection into variable computerSelection
+//GAME    
+function game() {                                                           //create function game() that runs a for loop
+    for (let i = 0; i < 5; ++i) {                                           //for i less than or equal to 5, play round and add i
+        playRound();                                                        //run playRound()
+    }
+    //write game summary in console.
+    console.log(`Final score - You: ${playerWinTotal} Computer: ${computerWinTotal}`);
+}
 
-    //create function getPlayerChoice() that takes user input [choice between rock paper or scissors], converts toUpperCase, returns it to playerSelection
-
-    //function compareRound() compares using IF statement, holds in local variable const result and provides output to console with who won.
-        //playerSelection === computer Selection
-            //Tie game, you both picked result
-            //computerWinTotal += 1
-            //playerWinTotal += 1
-            //The score is now you: playerWinTotal computer: computerWinTotal
-        //playerSelection === 'ROCK' && computerSelection === 'SCISSORS'
-        //playerSelection === 'PAPER' && computerSelection === 'ROCK'
-        //playerSelection === 'SCISSORS' && computerSelection === 'PAPER'
-            //You win! playerSelection beats computerSelection!
-            //playerWinTotal += 1
-            //The score is now you: playerWinTotal computer: computerWinTotal
-        //computerSelection === 'ROCK' && playerSelection === 'SCISSORS'
-        //computerSelection === 'PAPER' && playerSelection === 'ROCK'
-        //computerSelection === 'SCISSORS' && playerSelection === 'PAPER'
-            //You lose. computerSelection beats playerSelection!
-            //computerWinTotal += 1
-            //The score is now you: playerWinTotal computer: computerWinTotal
-        //default: Oops. Invalid choice. Please select ROCK, PAPER or SCISSORS. The score is still you: playerWinTotal computer: computerWinTotal
-
-//GAME
-//create function game() that runs a for loop
-    //for i less than or equal to 5, play round and add i
-    //run playRound()
-//write game summary in console. 
+ 
