@@ -3,6 +3,24 @@ let computerWinTotal = 0
 let roundCounter = 0
 let playerSelection
 let computerSelection
+const container = document.querySelector('#container');
+console.log(container);
+const playerDiv = document.querySelector('.playerscore');
+playerDiv.textContent = playerWinTotal;
+
+const computerDiv = document.querySelector('.computerscore');
+computerDiv.textContent = computerWinTotal;
+
+const results = document.querySelector('.results');
+
+const button = document.querySelectorAll('button');
+button.forEach(btn => btn.addEventListener('click', getPlayerSelection));
+//PLAYER SELECTION
+
+function getPlayerSelection(e) {
+    playerSelection = e.target.attributes.id.value;
+    game();
+}
 //create random number and hold in computerSelection
 function getComputerSelection() {                             
     randomNumber = Math.floor(Math.random() * 3);
@@ -41,23 +59,5 @@ function game() {                                                           //cr
         compareRound();                                                     
     //write game summary in console.
 return results.textContent = `Final score - You: ${playerWinTotal} Computer: ${computerWinTotal}`;
-}
-//PLAYER SELECTION
-const container = document.querySelector('#container');
-
-const playerDiv = document.querySelector('.player-score');
-playerDiv.textContent = playerWinTotal;
-
-const computerDiv = document.querySelector('.computer-score');
-computerDiv.textContent = computerWinTotal;
-
-const results = document.querySelector('.results');
-
-const button = document.querySelectorAll('button');
-button.forEach(btn => btn.addEventListener('click', getPlayerSelection));
-
-function getPlayerSelection(e) {
-    playerSelection = e.target.attributes.id.value;
-    game();
 }
  
