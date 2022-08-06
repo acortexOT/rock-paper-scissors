@@ -47,18 +47,21 @@ font-size: 24px;
     border-radius: 15px;
     padding: 8px;
     background-color:seashell;
+    margin: 8px;
 }
 
 .images {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    height: 300px;
 }
 
 img {
-    width: 100px;
+    width: 200px;
 }
 
 .results {
-    
+   font-size: 24px; 
 }
