@@ -4,7 +4,6 @@ let roundCounter = 0
 let playerSelection
 let computerSelection
 //PLAYER SELECTION
-
 function getPlayerSelection(e) {
     playerSelection = e.target.attributes.id.value;
     game();
@@ -16,6 +15,25 @@ function getComputerSelection() {
     (randomNumber === 1) ? computerSelection = 'PAPER': 
     computerSelection = 'SCISSORS'
 }
+
+//SHOW IMAGES OF SELECTIONS
+function showImages(){
+    const playerimg = document.querySelector('.playerimg');
+    const pImgSelected = document.createElement('img');
+    pImgSelected.src = `images/${playerSelection}.png`;
+    if (playerimg.firstChild) {//remove old pick from DOM
+        playerimg.removeChild(playerimg.firstChild); 
+    }       
+    playerimg.appendChild(pImgSelected);
+    const computerimg = document.querySelector('.computerimg');
+    const cImgSelected = document.createElement('img');
+    cImgSelected.src = `images/${computerSelection}.png`;
+    if (computerimg.firstChild) {
+        computerimg.removeChild(computerimg.firstChild);    //remove old pick from DOM
+    }
+    computerimg.appendChild(cImgSelected); 
+}
+
 //RESET VALUES
 function resetValues() {
 roundCounter = 0;
@@ -43,11 +61,12 @@ function compareRound() {                //compares using IF statement, holds in
 //GAME    
 function game() {                                                           //create function game() that runs a for loop
     getComputerSelection();
+    showImages();
     compareRound();
     playerDiv.textContent = playerWinTotal;
     computerDiv.textContent = computerWinTotal;                                                     
     if (playerWinTotal === 5 || computerWinTotal === 5) {
-        results.textContent +=`\nFinal score - You: ${playerWinTotal} Computer: ${computerWinTotal}`;
+        results.textContent +=`Final score - You: ${playerWinTotal} Computer: ${computerWinTotal}`;
         resetValues();
     };
 }
